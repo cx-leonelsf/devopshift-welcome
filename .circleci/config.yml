@@ -10,8 +10,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: [DESCRIPTION]
-          command: [COMMAND]
+          name: Test Cases
+          command: echo "Testing"
 
 workflows:
   version: 2
