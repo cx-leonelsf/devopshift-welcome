@@ -26,17 +26,14 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:14
-    parameters:
-      environment:
-        type: string
     steps:
       - run:
           name: Deploy
           command: |
-            echo "Deploying to << parameters.environment >> environment."
+            echo "Deploying to << pipeline.parameters.environment >> environment."
       - when:
           condition:
-            equal: ["<< parameters.environment >>", "production"]
+            equal: ["<< pipeline.parameters.environment >>", "production"]
           steps:
             - run:
                 name: Production Verification
@@ -53,5 +50,3 @@ workflows:
             branches:
               only:
                 - main
-          parameters:
-            environment: "production"
