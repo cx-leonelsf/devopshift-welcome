@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Test Cases
-          command: echo "Testing"
+          command: echo "Testing" << parameters.node_version >>
 
 workflows:
   version: 2
