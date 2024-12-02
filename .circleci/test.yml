@@ -1,0 +1,23 @@
+version: 2.1
+
+
+parameters:
+  example_param:
+    type: string
+    default: hello
+
+jobs:
+  example:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Print parameter
+          command: echo "<< pipeline.parameters.example_param >>"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - example
